@@ -21,7 +21,7 @@
 
 | # | Task | Milestone | Agent | Status | Start | End | Commit | Evidence |
 |---|---|---|---|---|---|---|---|---|
-| 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | (next commit) | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
+| 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | 9a9117c | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
 
 ## Log
 
