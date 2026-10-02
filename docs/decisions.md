@@ -13,7 +13,7 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 | D7 | 2026-10-02 | Tracking | Specialist sub-agents, `PROGRESS.md`, GitHub issues, milestones and board | Approved 2026-10-02 |
 | D8 | 2026-10-02 | Approval | The project lead approves structural decisions, public actions and each milestone close | Approved 2026-10-02 |
 | D9 | 2026-10-02 | Pace | Milestones chained with no target date | Approved 2026-10-02 |
-| D10 | 2026-10-02 | Repository | Public repository `inflation-fx-etl` | Name approved 2026-10-02; public creation pending approval |
+| D10 | 2026-10-02 | Repository | Public repository `inflation-fx-etl` | Approved 2026-10-02 |
 | D11 | 2026-10-02 | Inflation data | Monthly: OECD (legacy dataflow + new COICOP 2018 dataflow) and ECB HICP; annual World Bank fallback coded but dormant; freshness alert; USA 2025-10 left empty | Approved 2026-10-02 |
 | D12 | 2026-10-02 | Language | All public content in English | Approved 2026-10-02 |
 | D13 | 2026-10-02 | Progress tracking | The orchestrator updates the log; the tracking agent only at milestone close (measured cost) | Approved 2026-10-02 |
@@ -141,7 +141,7 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 - Public GitHub repository with milestones, issues and a board from the start.
 - Local repository first, published later; progress tracked only in `PROGRESS.md`.
 
-**Decision.** Public repository named `inflation-fx-etl`. The name is approved; the public creation requires explicit approval from the project lead before it happens.
+**Decision.** Public repository named `inflation-fx-etl`, with milestones M0–M4, labels and a public board ([project board](https://github.com/users/Stryxman/projects/2)). Name and creation approved by the project lead on 2026-10-02, before the repository was created.
 
 **Rationale.** The name states what the project does. Creating a public resource is a public action, so it is gated by D8.
 

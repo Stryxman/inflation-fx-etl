@@ -2,7 +2,7 @@
 
 - **Version:** 1.0
 - **Date:** 2026-10-02
-- **Status:** Draft — pending project lead approval
+- **Status:** Draft — pending project lead approval at the M0 milestone review
 - **Author:** Richard (project lead), with an AI coding assistant
 
 ## 1. Context and question tracked
@@ -168,4 +168,4 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 
 | Version | Date | Change | Status |
 |---|---|---|---|
-| 1.0 | 2026-10-02 | First version, derived from the design specification | Draft — pending project lead approval |
+| 1.0 | 2026-10-02 | First version, derived from the design specification | Draft — pending project lead approval at the M0 milestone review |
