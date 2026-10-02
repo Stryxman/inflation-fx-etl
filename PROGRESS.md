@@ -12,8 +12,8 @@
 | 3 | Data source verification | M0 | etl-extractor | ✅ | 2026-10-02T12:43:50+02:00 | 2026-10-02T14:20:00+02:00 | — (committed with task 4) | 9 up-to-date monthly series, `check_sources_yaml.py` → OK |
 | 4 | Steering documents (project charter, decisions, risks, sources, README) | M0 | etl-extractor (drafting) | ✅ | 2026-10-02T14:24:51+02:00 | 2026-10-02T14:35:31+02:00 | 583b4f4 | Documentation consistency check: COMPLIANT after one round of fixes; source completeness check OK |
 | 5 | Resume files and deferred points | M0 | orchestrator | ✅ | 2026-10-02T12:45:21+02:00 | 2026-10-02T12:47:00+02:00 | — (outside the repo) | Handoff notes and deferred-items list created (private, outside the repo) |
-| 6 | GitHub publication (repo, milestones, labels, board) | M0 | orchestrator | ✅ | 2026-10-02T14:40:00+02:00 | 2026-10-02T14:37:37+02:00 | 9a87cd2 | Pre-publication identity check clean; repository, 5 milestones, 5 labels and public board with 4 columns created |
-| 7 | Issue backlog M0 → M4 | M0 | orchestrator | ✅ | 2026-10-02T14:45:00+02:00 | 2026-10-02T14:40:18+02:00 | (this commit) | 16 issues (M0: 1, M1: 7, M2: 3, M3: 2, M4: 3) on the board: 1 In progress, 15 Todo |
+| 6 | GitHub publication (repo, milestones, labels, board) | M0 | orchestrator | ✅ | 2026-10-02T14:36:17+02:00 | 2026-10-02T14:37:37+02:00 | 9a87cd2 | Pre-publication identity check clean; repository, 5 milestones, 5 labels and public board with 4 columns created |
+| 7 | Issue backlog M0 → M4 | M0 | orchestrator | ✅ | 2026-10-02T14:37:40+02:00 | 2026-10-02T14:40:18+02:00 | 542f904 | 16 issues (M0: 1, M1: 7, M2: 3, M3: 2, M4: 3) on the board: 1 In progress, 15 Todo |
 | 8 | Effort measurement (token tracking) | M0 | implementer + code-reviewer | ✅ | 2026-10-02T12:45:00+02:00 | 2026-10-02T13:15:37+02:00 | — (tool outside the repo) | 19 tests green, review APPROVED after 1 fix loop, mutations detected |
 | 9 | M0 acceptance check | M0 | code-reviewer, qa-verifier | 🟡 | 2026-10-02T14:40:18+02:00 | | | |
 
@@ -27,6 +27,7 @@
 - 2026-10-02 14:35 — Task 4 — project charter v1.0 (draft), decisions D1–D13, risks R1–R8, sources, README written in English; 4 inconsistencies found by the consistency check and fixed — evidence: verdict COMPLIANT — next: task 6 (public repository, pending project lead approval).
 - 2026-10-02 14:37 — Task 6 — public repository, milestones M0–M4, labels and public board created after project lead approval — evidence: identity check clean before push; board columns Todo / In progress / Review / Done — next: task 7 (backlog issues).
 - 2026-10-02 14:40 — Task 7 — backlog of 16 issues with acceptance criteria created and placed on the board — evidence: issue count per milestone verified through the API — next: task 9 (M0 review: retroactive code review, acceptance check, project lead approval).
+- 2026-10-02 14:51 — Task 9 (in progress) — retroactive review of M0: 5 important findings fixed (token report headers, wrong start times, tracking-agent instructions, design notes out of date, untestable freshness rule) and 8 issues completed with missing criteria; acceptance check of issue #1 passed — evidence: review APPROVED, consistency check COMPLIANT, acceptance ACCEPTED — next: project lead approval of the charter v1.0 and M0 close.
 
 ## Blockers
 

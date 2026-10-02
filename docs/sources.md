@@ -48,7 +48,7 @@ World Bank (`FP.CPI.TOTL.ZG`, data updated on 2026-07-13): latest available year
 | TUR | 2025-12 | 2026-08 |
 | USA, GBR, BRA, IND | 2026-08 | no records |
 
-Probable cause: countries are gradually switching to the COICOP 2018 classification; each country is published in only one of the two dataflows for its recent period. The series in the new dataflow are complete from 2015-01 (140 monthly observations), so no concatenation across dataflows is needed. To watch: USA, GBR, BRA, IND may switch in turn; the freshness check must raise an alert if a series' last period stops advancing or moves backwards.
+Probable cause: countries are gradually switching to the COICOP 2018 classification; each country is published in only one of the two dataflows for its recent period. The series in the new dataflow are complete from 2015-01 (140 monthly observations), so no concatenation across dataflows is needed. To watch: USA, GBR, BRA, IND may switch in turn; the CPI freshness check (latest period of each monthly series no older than 3 months before the current month, per country) raises a warning when a series stops advancing.
 
 **Quarterly.** `Q` series exist for most countries (USA, GBR, IND, BRA up to 2026-Q2; CHE, TUR up to 2025-Q4; JPN up to 2021-Q2; ZAF up to 2024-Q4 for the annual rate) but are not used, since the monthly series is up to date everywhere.
 

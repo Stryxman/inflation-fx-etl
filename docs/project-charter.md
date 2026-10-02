@@ -87,13 +87,14 @@ Exchange rates are expressed as units of foreign currency per 1 EUR.
 
 For `ppp_gap`, each price index is divided by its own value in 2015-01 (ratios of indices relative to 2015-01). The index base year (2015 for the OECD, 2025 for the ECB) therefore has no effect on the result.
 
+If a month comes from the dormant annual fallback (`is_fallback`), its price index is rebuilt by compounding the annual rates, and the resulting rows keep `is_fallback = true`.
+
 Quality checks (`sql/checks`):
 
 - no duplicates on the `staging` keys (block);
 - no null or non-positive `rate` (block);
 - latest exchange rate less than 5 business days old (warn);
-- latest CPI less than 3 months old, per country (warn);
-- freshness alert if a series' last period stops advancing (warn);
+- latest CPI less than 3 months old, per country (warn) — this is also how a series that stopped advancing after an API migration is detected, without storing the previous run's state;
 - share of fallback values per country (warn if > 0).
 
 ### 4.4 Dashboard
@@ -106,15 +107,17 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
   2. Year-on-year inflation of the selected countries, with the euro area dashed.
   3. Scatter plot for the latest available month: inflation gap (X) against `fx_yoy` (Y), one point per country.
   4. `ppp_gap` index, with a reference line at 100.
+- Points derived from the fallback (`is_fallback`) are visibly marked on panels 2 and 4.
   5. Pipeline health: latest run per source, status, rows loaded, and failing quality checks.
 - Automatic refresh every 5 minutes. The default period covers the last 5 years.
 
 ### 4.5 Robustness
 
-- **Incremental loading:** `since = max(date in raw.<table>) - 10 days`, or 2015-01-01 if the table is empty. The overlap captures revisions, and the UPSERT prevents duplicates.
+- **Incremental loading:** `since = max(date in raw.<table>) - 10 days`, or 2015-01-01 if the table is empty; annual World Bank series reload the last loaded year and any newer year. The overlap captures revisions, and the UPSERT prevents duplicates.
 - **HTTP:** 30 s maximum per request; 3 retries with increasing delay (1 s, 2 s, 4 s) for 5xx errors, 429 and network errors.
 - **Source isolation:** if a source fails, `audit.etl_runs.status = failed` is written with the error message and the other sources continue. The transformation runs on the available data. The CLI exits with code 1 if at least one source failed.
 - **Transactions:** a failure in a layer rolls back the whole layer; the `mart` views keep their previous state.
+- **Commands:** `make up`, `down`, `etl`, `transform`, `check`, `test`, `psql`, `reset`. `tests/test_config.py` checks that `config/sources.yaml` covers every territory.
 - **Scheduling:** manual trigger (`make etl`) in V1. The README provides an optional daily cron line.
 - **Testing:** unit tests on each `parse()`, SQL tests with exact expected values, integration test with two runs and mocked HTTP; each test is written before the code (TDD).
 
@@ -140,9 +143,9 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 |---|---|
 | M0 — Scoping | Steering documents, source verification, repository and tracking set-up |
 | M1 — Extract + Load | Docker infrastructure, CI, `raw`/`audit` schemas, 4 extractor modules covering 5 sources (both OECD dataflows share one module), loader, CLI |
-| M2 — Transform | SQL `staging`, `mart` and `checks` layers, SQL tests |
-| M3 — Presentation (V1) | Provisioned Grafana dashboard, end-to-end test, first real load |
-| M4 — Finishing | README with screenshots, cron, review, risk review |
+| M2 — SQL transform | SQL `staging`, `mart` and `checks` layers, SQL tests |
+| M3 — Dashboard (V1) | Provisioned Grafana dashboard, end-to-end test, first real load |
+| M4 — Wrap-up | README with screenshots, cron, review, risk review |
 
 ### Roles
 

@@ -154,7 +154,7 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 - Monthly data without any fallback.
 - World Bank annual data only.
 
-**Decision.** Monthly data from the OECD (legacy dataflow for USA, GBR, BRA, IND; COICOP 2018 dataflow for JPN, CHE, TUR, ZAF) and from the ECB HICP dataset (key provider `4D0`, replacing the frozen `ICP`) for the euro area. The annual World Bank fallback is coded but dormant. USA 2025-10 is left empty, with no interpolation. A freshness alert is raised if a series' last period stops advancing.
+**Decision.** Monthly data from the OECD (legacy dataflow for USA, GBR, BRA, IND; COICOP 2018 dataflow for JPN, CHE, TUR, ZAF) and from the ECB HICP dataset (key provider `4D0`, replacing the frozen `ICP`) for the euro area. The annual World Bank fallback is coded but dormant. USA 2025-10 is left empty, with no interpolation. A freshness check (latest period of each monthly series no older than 3 months before the current month, per country) warns when a series stops advancing.
 
 **Rationale.** Monthly data is required to compare inflation with monthly exchange-rate moves; annual data would hide most of the signal. The fallback keeps the pipeline able to display a country if its monthly series ever disappears, at no cost while dormant. Leaving the USA gap empty avoids inventing data. The freshness alert makes the next API migration visible instead of silent.
 
