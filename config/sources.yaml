@@ -1,0 +1,100 @@
+# Data sources and selected series. Verified on 2026-10-02 (see docs/sources.md).
+
+# Exchange rates: units of foreign currency per 1 EUR, daily, business days.
+# {currencies} = USD+GBP+JPY+CHF+TRY+BRL+INR+ZAR
+ecb_fx:
+  url: "https://data-api.ecb.europa.eu/service/data/EXR/D.{currencies}.EUR.SP00.A"
+  format: csv
+
+# Euro-area inflation. WARNING: the ICP dataset stops at 2025-12; we use
+# the new HICP dataset (key with provider 4D0), which runs to 2026-09.
+ecb_hicp:
+  url: "https://data-api.ecb.europa.eu/service/data/HICP/{key}"
+  format: csv
+  series:
+    yoy: "M.U2.N.000000.4D0.ANR"    # annual rate of change
+    index: "M.U2.N.000000.4D0.INX"  # index, base 2025 = 100
+
+# OECD, COICOP 1999 dataflow (legacy): up to date for USA, GBR, BRA, IND.
+oecd_cpi:
+  url: "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0/{key}"
+  format: sdmx-csv
+
+# OECD, COICOP 2018 dataflow (new): up to date for JPN, CHE, TUR, ZAF.
+# Same key dimension order as the legacy dataflow.
+oecd_cpi_c2018:
+  url: "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,1.0/{key}"
+  format: sdmx-csv
+
+# World Bank: country metadata (income level) and annual inflation. The inflation part is a dormant fallback (D11): coded, but inactive while all monthly series are covered.
+worldbank:
+  url: "https://api.worldbank.org/v2"
+  format: json
+  indicator: FP.CPI.TOTL.ZG
+
+# One block per territory. covered_from / covered_until: period measured on 2026-10-02
+# (covered_from is always 2015-01, the start of the tested window).
+inflation:
+  USA:  # one-observation gap: 2025-10 (missing at the source)
+    source: oecd_cpi
+    key: "USA.M.N.CPI.PA._T.N.GY"
+    index_key: "USA.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  GBR:
+    source: oecd_cpi
+    key: "GBR.M.N.CPI.PA._T.N.GY"
+    index_key: "GBR.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  JPN:  # absent from the legacy dataflow after 2021-06: new COICOP 2018 dataflow
+    source: oecd_cpi_c2018
+    key: "JPN.M.N.CPI.PA._T.N.GY"
+    index_key: "JPN.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  CHE:  # legacy dataflow stopped at 2025-12
+    source: oecd_cpi_c2018
+    key: "CHE.M.N.CPI.PA._T.N.GY"
+    index_key: "CHE.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  TUR:  # legacy dataflow stopped at 2025-12
+    source: oecd_cpi_c2018
+    key: "TUR.M.N.CPI.PA._T.N.GY"
+    index_key: "TUR.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  BRA:
+    source: oecd_cpi
+    key: "BRA.M.N.CPI.PA._T.N.GY"
+    index_key: "BRA.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  IND:
+    source: oecd_cpi
+    key: "IND.M.N.CPI.PA._T.N.GY"
+    index_key: "IND.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  ZAF:  # legacy dataflow stopped at 2025-01: new COICOP 2018 dataflow
+    source: oecd_cpi_c2018
+    key: "ZAF.M.N.CPI.PA._T.N.GY"
+    index_key: "ZAF.M.N.CPI.IX._T.N._Z"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-08"
+  EA:  # euro area, changing composition; last point 2026-09 = flash estimate (OBS_STATUS=E)
+    source: ecb_hicp
+    key: "M.U2.N.000000.4D0.ANR"
+    index_key: "M.U2.N.000000.4D0.INX"
+    freq: M
+    covered_from: "2015-01"
+    covered_until: "2026-09"

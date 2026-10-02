@@ -1,0 +1,12 @@
+# Country scope (spec §2). The group is fixed here, not derived from the World Bank income level.
+countries:
+  - {iso3: USA, iso2: US, currency: USD, group: developed}
+  - {iso3: GBR, iso2: GB, currency: GBP, group: developed}
+  - {iso3: JPN, iso2: JP, currency: JPY, group: developed}
+  - {iso3: CHE, iso2: CH, currency: CHF, group: developed}
+  - {iso3: TUR, iso2: TR, currency: TRY, group: emerging}
+  - {iso3: BRA, iso2: BR, currency: BRL, group: emerging}
+  - {iso3: IND, iso2: IN, currency: INR, group: emerging}
+  - {iso3: ZAF, iso2: ZA, currency: ZAR, group: emerging}
+# Reference: the euro area (internal code EA)
+reference: {code: EA, currency: EUR}
