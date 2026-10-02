@@ -15,7 +15,7 @@
 | 6 | GitHub publication (repo, milestones, labels, board) | M0 | orchestrator | ✅ | 2026-10-02T14:36:17+02:00 | 2026-10-02T14:37:37+02:00 | 9a87cd2 | Pre-publication identity check clean; repository, 5 milestones, 5 labels and public board with 4 columns created |
 | 7 | Issue backlog M0 → M4 | M0 | orchestrator | ✅ | 2026-10-02T14:37:40+02:00 | 2026-10-02T14:40:18+02:00 | 542f904 | 16 issues (M0: 1, M1: 7, M2: 3, M3: 2, M4: 3) on the board: 1 In progress, 15 Todo |
 | 8 | Effort measurement (token tracking) | M0 | implementer + code-reviewer | ✅ | 2026-10-02T12:45:00+02:00 | 2026-10-02T13:15:37+02:00 | — (tool outside the repo) | 19 tests green, review APPROVED after 1 fix loop, mutations detected |
-| 9 | M0 acceptance check | M0 | code-reviewer, qa-verifier | 🟡 | 2026-10-02T14:40:18+02:00 | | | |
+| 9 | M0 acceptance check | M0 | code-reviewer, qa-verifier | ✅ | 2026-10-02T14:40:18+02:00 | 2026-10-02T14:54:44+02:00 | (this commit) | Retroactive review APPROVED, acceptance of #1 ACCEPTED, consistency COMPLIANT; charter v1.0 and M0 close approved by the project lead |
 
 ## Log
 
@@ -28,6 +28,7 @@
 - 2026-10-02 14:37 — Task 6 — public repository, milestones M0–M4, labels and public board created after project lead approval — evidence: identity check clean before push; board columns Todo / In progress / Review / Done — next: task 7 (backlog issues).
 - 2026-10-02 14:40 — Task 7 — backlog of 16 issues with acceptance criteria created and placed on the board — evidence: issue count per milestone verified through the API — next: task 9 (M0 review: retroactive code review, acceptance check, project lead approval).
 - 2026-10-02 14:51 — Task 9 (in progress) — retroactive review of M0: 5 important findings fixed (token report headers, wrong start times, tracking-agent instructions, design notes out of date, untestable freshness rule) and 8 issues completed with missing criteria; acceptance check of issue #1 passed — evidence: review APPROVED, consistency check COMPLIANT, acceptance ACCEPTED — next: project lead approval of the charter v1.0 and M0 close.
+- 2026-10-02 14:54 — Task 9 — project lead approved the charter v1.0 and the M0 close; issue #1 and milestone M0 closed — evidence: approval in session, all three quality gates passed — next: M1 plan (Extract + Load).
 
 ## Blockers
 

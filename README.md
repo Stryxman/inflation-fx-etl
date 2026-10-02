@@ -30,7 +30,7 @@ The pipeline collects public data (ECB, OECD, World Bank), loads it into Postgre
 
 ## Status
 
-M0 scoping in progress. No application code yet. See [PROGRESS.md](PROGRESS.md).
+M0 scoping completed on 2026-10-02 (charter v1.0 approved). M1 (Extract + Load) is next. No application code yet. See [PROGRESS.md](PROGRESS.md).
 
 ## Documents
 
