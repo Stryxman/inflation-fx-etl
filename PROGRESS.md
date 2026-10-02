@@ -15,7 +15,7 @@
 | 6 | GitHub publication (repo, milestones, labels, board) | M0 | orchestrator | ✅ | 2026-10-02T14:36:17+02:00 | 2026-10-02T14:37:37+02:00 | 9a87cd2 | Pre-publication identity check clean; repository, 5 milestones, 5 labels and public board with 4 columns created |
 | 7 | Issue backlog M0 → M4 | M0 | orchestrator | ✅ | 2026-10-02T14:37:40+02:00 | 2026-10-02T14:40:18+02:00 | 542f904 | 16 issues (M0: 1, M1: 7, M2: 3, M3: 2, M4: 3) on the board: 1 In progress, 15 Todo |
 | 8 | Effort measurement (token tracking) | M0 | implementer + code-reviewer | ✅ | 2026-10-02T12:45:00+02:00 | 2026-10-02T13:15:37+02:00 | — (tool outside the repo) | 19 tests green, review APPROVED after 1 fix loop, mutations detected |
-| 9 | M0 acceptance check | M0 | code-reviewer, qa-verifier | ✅ | 2026-10-02T14:40:18+02:00 | 2026-10-02T14:54:44+02:00 | (this commit) | Retroactive review APPROVED, acceptance of #1 ACCEPTED, consistency COMPLIANT; charter v1.0 and M0 close approved by the project lead |
+| 9 | M0 acceptance check | M0 | code-reviewer, qa-verifier | ✅ | 2026-10-02T14:40:18+02:00 | 2026-10-02T14:54:44+02:00 | f1f0b50 | Retroactive review APPROVED, acceptance of #1 ACCEPTED, consistency COMPLIANT; charter v1.0 and M0 close approved by the project lead |
 
 ## Log
 
