@@ -1,8 +1,8 @@
 # Project charter — Inflation × Exchange Rate ETL
 
-- **Version:** 1.0
+- **Version:** 1.1
 - **Date:** 2026-10-02
-- **Status:** Approved by the project lead on 2026-10-02 (M0 milestone review)
+- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 propagates decision D14
 - **Author:** Richard (project lead), with an AI coding assistant
 
 ## 1. Context and question tracked
@@ -158,6 +158,7 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 - Acceptance check of each issue, with command outputs as evidence.
 - Documentation consistency check before any commit touching documents or configuration.
 - Retroactive review and acceptance check at each milestone close, followed by the project lead's approval.
+- Progress log (`PROGRESS.md`): mechanical checks by a script at every commit; at each milestone close, the consistency check re-reads the whole log against the repository and GitHub ([D14](decisions.md)).
 
 ## 8. Success criteria
 
@@ -172,3 +173,4 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 1.0 | 2026-10-02 | First version, derived from the design specification | Approved 2026-10-02 |
+| 1.1 | 2026-10-02 | Quality gates: progress log checks (propagation of D14) | Reflects D14 (decision approved 2026-10-02); v1.1 itself pending project lead approval at the M1 review |

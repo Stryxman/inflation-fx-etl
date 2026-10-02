@@ -37,7 +37,7 @@ M0 scoping completed on 2026-10-02 (charter v1.0 approved). M1 (Extract + Load) 
 | Document | Content |
 |---|---|
 | [docs/project-charter.md](docs/project-charter.md) | Context, objectives, scope, indicators, organisation, success criteria |
-| [docs/decisions.md](docs/decisions.md) | Decision log (D1–D13) |
+| [docs/decisions.md](docs/decisions.md) | Decision log (D1–D14) |
 | [docs/risks.md](docs/risks.md) | Risk register (R1–R8) |
 | [docs/sources.md](docs/sources.md) | Data sources, licences, coverage and technical notes |
 | [PROGRESS.md](PROGRESS.md) | Task tracking and project log |

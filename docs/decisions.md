@@ -16,7 +16,8 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 | D10 | 2026-10-02 | Repository | Public repository `inflation-fx-etl` | Approved 2026-10-02 |
 | D11 | 2026-10-02 | Inflation data | Monthly: OECD (legacy dataflow + new COICOP 2018 dataflow) and ECB HICP; annual World Bank fallback coded but dormant; freshness alert; USA 2025-10 left empty | Approved 2026-10-02 |
 | D12 | 2026-10-02 | Language | All public content in English | Approved 2026-10-02 |
-| D13 | 2026-10-02 | Progress tracking | The orchestrator updates the log; the tracking agent only at milestone close (measured cost) | Approved 2026-10-02 |
+| D13 | 2026-10-02 | Progress tracking | The orchestrator updates the log; the tracking agent only at milestone close (measured cost) | Approved 2026-10-02; milestone-close part superseded by D14 |
+| D14 | 2026-10-02 | Progress log checks | Tracking agent removed: mechanical checks by a script at every commit, meaning checked by the existing review, acceptance and consistency agents | Approved 2026-10-02 |
 
 ## D1 — Tracked subject
 
@@ -182,3 +183,17 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 **Decision.** The orchestrator makes the routine updates of `PROGRESS.md`; the tracking agent is used only at milestone close.
 
 **Rationale.** The log stays current at a small fraction of the cost, and the milestone-close pass still gives a thorough, independent consolidation where it adds the most value.
+
+**Status note.** The milestone-close pass by a dedicated tracking agent is superseded by [D14](#d14--progress-log-checks).
+
+## D14 — Progress log checks
+
+**Context.** At the M0 close, the checks the tracking agent was meant to run were already covered: a script validated timestamps and required fields, and the consistency check had just re-read the log. The agent would have cost about 44k tokens for a duplicate check, and a language model can miss mechanical errors (wrong timestamps in M0 were found by the code review, not by the tracking agent).
+
+**Options considered.**
+- Keep the tracking agent at each milestone close.
+- Replace it with a script run at every commit for mechanical checks, and rely on the existing review, acceptance and consistency agents for meaning.
+
+**Decision.** The tracking agent is removed. A script checks `PROGRESS.md` at every commit that touches it: ISO timestamps with time zone, `Start` before `End`, required fields of done tasks, cited commits that exist in the repository, and one `## Log` entry per done task. At each milestone close, the consistency check re-reads the whole log and checks that every piece of evidence matches the repository and GitHub; the acceptance check re-runs the evidence of each criterion.
+
+**Rationale.** Mechanical errors are caught earlier (at each commit instead of at milestone close), deterministically and at almost no cost. Errors of meaning stay covered by three independent agents that already read the log.

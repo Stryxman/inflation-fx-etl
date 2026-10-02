@@ -17,10 +17,16 @@
 | 8 | Effort measurement (token tracking) | M0 | implementer + code-reviewer | ✅ | 2026-10-02T12:45:00+02:00 | 2026-10-02T13:15:37+02:00 | — (tool outside the repo) | 19 tests green, review APPROVED after 1 fix loop, mutations detected |
 | 9 | M0 acceptance check | M0 | code-reviewer, qa-verifier | ✅ | 2026-10-02T14:40:18+02:00 | 2026-10-02T14:54:44+02:00 | f1f0b50 | Retroactive review APPROVED, acceptance of #1 ACCEPTED, consistency COMPLIANT; charter v1.0 and M0 close approved by the project lead |
 
+## Milestone M1 — Extract + Load
+
+| # | Task | Milestone | Agent | Status | Start | End | Commit | Evidence |
+|---|---|---|---|---|---|---|---|---|
+| 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | (next commit) | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
+
 ## Log
 
 - 2026-10-02 12:43 — Task 1 — repository re-initialised, identity check installed and tested (a commit containing personal data is correctly rejected) — evidence: commit 0b4d531 signed Richard — next: tasks 2, 3, 8.
-- 2026-10-02 12:44 — Task 2 — 8 agents defined (4 implementation, review, acceptance, consistency, tracking) — evidence: valid YAML headers — next: task 5 while tasks 3 and 8 run.
+- 2026-10-02 12:44 — Task 2 — 8 agents defined (4 implementation, review, acceptance, consistency, tracking; the tracking agent was later removed by D14) — evidence: valid YAML headers — next: task 5 while tasks 3 and 8 run.
 - 2026-10-02 12:47 — Task 5 — handoff notes and deferred-items list created — evidence: private files outside the repo — next: task 4 after task 3.
 - 2026-10-02 13:15 — Task 8 — effort measurement tool delivered (attribution per task, per role, overlaps flagged); the review also hardened the pre-commit identity check (7 bypass cases are now rejected) — evidence: 19 tests green, verdict APPROVED — next: task 4 as soon as task 3 is done.
 - 2026-10-02 14:20 — Task 3 — the data gaps came from API migrations (OECD COICOP 2018, ECB HICP); 9 up-to-date monthly series from 2015 to 2026-08/09 — evidence: completeness check OK — next: decisions D11, D12, D13 taken by Richard, task 4.
@@ -29,6 +35,7 @@
 - 2026-10-02 14:40 — Task 7 — backlog of 16 issues with acceptance criteria created and placed on the board — evidence: issue count per milestone verified through the API — next: task 9 (M0 review: retroactive code review, acceptance check, project lead approval).
 - 2026-10-02 14:51 — Task 9 (in progress) — retroactive review of M0: 5 important findings fixed (token report headers, wrong start times, tracking-agent instructions, design notes out of date, untestable freshness rule) and 8 issues completed with missing criteria; acceptance check of issue #1 passed — evidence: review APPROVED, consistency check COMPLIANT, acceptance ACCEPTED — next: project lead approval of the charter v1.0 and M0 close.
 - 2026-10-02 14:54 — Task 9 — project lead approved the charter v1.0 and the M0 close; issue #1 and milestone M0 closed — evidence: approval in session, all three quality gates passed — next: M1 plan (Extract + Load).
+- 2026-10-02 15:08 — Task 10 — D14 applied: mechanical checks of the progress log at every commit, tracking agent removed, end-of-milestone re-read added to the consistency check; charter v1.1 — evidence: 9 tests green, consistency check COMPLIANT — next: M1 plan.
 
 ## Blockers
 
