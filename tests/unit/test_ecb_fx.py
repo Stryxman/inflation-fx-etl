@@ -104,3 +104,14 @@ def test_since_for_wrong_last_type():
         since_for(2024, "date")
     with pytest.raises(TypeError):
         since_for(date(2024, 1, 1), "year")
+
+
+def test_empty_value_and_blank_line_are_skipped():
+    payload = (
+        b"KEY,CURRENCY,TIME_PERIOD,OBS_VALUE,OBS_STATUS\r\n"
+        b"EXR.D.USD.EUR.SP00.A,USD,2026-01-02,,A\r\n"
+        b"\r\n"
+        b"EXR.D.USD.EUR.SP00.A,USD,2026-01-05,1.04,A\r\n"
+    )
+    rows = ecb_fx.parse(payload)
+    assert [r["date"] for r in rows] == [date(2026, 1, 5)]
