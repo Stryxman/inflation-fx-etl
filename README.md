@@ -30,16 +30,17 @@ The pipeline collects public data (ECB, OECD, World Bank), loads it into Postgre
 
 ## Status
 
-M0 scoping completed on 2026-10-02 (charter v1.0 approved). M1 (Extract + Load) is next. No application code yet. See [PROGRESS.md](PROGRESS.md).
+M0 scoping completed on 2026-10-02 (charter v1.0 approved). M1 (Extract + Load) in progress: local infrastructure, project tooling and CI first. See [PROGRESS.md](PROGRESS.md).
 
 ## Documents
 
 | Document | Content |
 |---|---|
 | [docs/project-charter.md](docs/project-charter.md) | Context, objectives, scope, indicators, organisation, success criteria |
-| [docs/decisions.md](docs/decisions.md) | Decision log (D1–D14) |
+| [docs/decisions.md](docs/decisions.md) | Decision log (D1–D15) |
 | [docs/risks.md](docs/risks.md) | Risk register (R1–R8) |
 | [docs/sources.md](docs/sources.md) | Data sources, licences, coverage and technical notes |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Naming, test, log and commit conventions |
 | [PROGRESS.md](PROGRESS.md) | Task tracking and project log |
 | [config/countries.yaml](config/countries.yaml) | Country scope |
 | [config/sources.yaml](config/sources.yaml) | Source URLs and selected series |
@@ -48,5 +49,16 @@ M0 scoping completed on 2026-10-02 (charter v1.0 approved). M1 (Extract + Load) 
 
 - Docker
 - Python 3.12+
+- GNU Make
 
-There are no installation steps yet; they will be added with the infrastructure milestone (M1).
+## Getting started
+
+```bash
+make venv                # create .venv and install the package with dev tools
+cp .env.example .env     # local values only; edit if a port is already in use
+make up                  # start PostgreSQL 17 and Grafana (http://localhost:3000)
+make test                # run the tests (database tests need `make up`)
+make lint                # ruff and mypy
+```
+
+`make down` stops the containers; `make reset` also deletes their data. The `make etl`, `make transform` and `make check` targets arrive with the extract and transform milestones.

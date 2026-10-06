@@ -22,6 +22,14 @@
 | # | Task | Milestone | Agent | Status | Start | End | Commit | Evidence |
 |---|---|---|---|---|---|---|---|---|
 | 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | 9a9117c | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
+| 11 | Local infrastructure, Python project, CI (#2) | M1 | infra-devops | 🟡 | 2026-10-06T10:03:06+02:00 | | | |
+| 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | ⬜ | | | | |
+| 13 | HTTP layer and ECB exchange rates (#4) | M1 | etl-extractor | ⬜ | | | | |
+| 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ⬜ | | | | |
+| 15 | OECD inflation (#6) | M1 | etl-extractor | ⬜ | | | | |
+| 16 | World Bank metadata and annual inflation (#7) | M1 | etl-extractor | ⬜ | | | | |
+| 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | ⬜ | | | | |
+| 18 | M1 acceptance check | M1 | code-reviewer, qa-verifier, controleur-coherence | ⬜ | | | | |
 
 ## Log
 

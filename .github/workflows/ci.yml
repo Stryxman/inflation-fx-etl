@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: etl
+          POSTGRES_PASSWORD: etl_local_only
+          POSTGRES_DB: etl
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U etl -d etl"
+          --health-interval 5s
+          --health-retries 20
+    env:
+      CI: "true"
+      PGPASSWORD: etl_local_only
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Create test database
+        run: psql -h localhost -U etl -c 'CREATE DATABASE etl_test'
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+          mypy etl
+      - name: Test
+        run: pytest -q

@@ -1,0 +1,1 @@
+CREATE DATABASE etl_test;
