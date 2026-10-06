@@ -23,7 +23,7 @@
 |---|---|---|---|---|---|---|---|---|
 | 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | 9a9117c | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
 | 11 | Local infrastructure, Python project, CI (#2) | M1 | infra-devops | ✅ | 2026-10-06T10:03:06+02:00 | 2026-10-06T10:20:34+02:00 | 2601890 | PR #17: CI green (12 tests incl. database tests, coverage 97 %); review APPROVED after 1 fix round; acceptance ACCEPTED after scope note (make etl/transform/check moved to #8) and pinned images |
-| 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | 🟡 | 2026-10-06T10:13:23+02:00 | | | |
+| 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | ✅ | 2026-10-06T10:13:23+02:00 | 2026-10-06T10:23:42+02:00 | 23b8a11 | PR #18: CI green; 20 tests incl. column contract (coverage 98 %); review APPROVED; acceptance ACCEPTED |
 | 13 | HTTP layer and ECB exchange rates (#4) | M1 | etl-extractor | ⬜ | | | | |
 | 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ⬜ | | | | |
 | 15 | OECD inflation (#6) | M1 | etl-extractor | ⬜ | | | | |
@@ -45,6 +45,7 @@
 - 2026-10-02 14:54 — Task 9 — project lead approved the charter v1.0 and the M0 close; issue #1 and milestone M0 closed — evidence: approval in session, all three quality gates passed — next: M1 plan (Extract + Load).
 - 2026-10-02 15:08 — Task 10 — D14 applied: mechanical checks of the progress log at every commit, tracking agent removed, end-of-milestone re-read added to the consistency check; charter v1.1 — evidence: 9 tests green, consistency check COMPLIANT — next: M1 plan.
 - 2026-10-06 10:20 — Task 11 — local infrastructure, project tooling (coverage, strict typing, naming rules) and CI merged; Docker images pinned — evidence: PR #17 CI green, review APPROVED, acceptance ACCEPTED — next: task 12 (raw schemas).
+- 2026-10-06 10:23 — Task 12 — raw and audit schemas merged (5 raw tables with lineage, run log with stage timings, idempotent apply in one transaction) — evidence: PR #18 CI green, review APPROVED, acceptance ACCEPTED — next: task 13 (HTTP layer and ECB exchange rates, in progress).
 
 ## Blockers
 
