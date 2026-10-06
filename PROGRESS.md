@@ -23,7 +23,7 @@
 |---|---|---|---|---|---|---|---|---|
 | 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | 9a9117c | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
 | 11 | Local infrastructure, Python project, CI (#2) | M1 | infra-devops | ✅ | 2026-10-06T10:03:06+02:00 | 2026-10-06T10:20:34+02:00 | 2601890 | PR #17: CI green (12 tests incl. database tests, coverage 97 %); review APPROVED after 1 fix round; acceptance ACCEPTED after scope note (make etl/transform/check moved to #8) and pinned images |
-| 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | ⬜ | | | | |
+| 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | 🟡 | 2026-10-06T10:13:23+02:00 | | | |
 | 13 | HTTP layer and ECB exchange rates (#4) | M1 | etl-extractor | ⬜ | | | | |
 | 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ⬜ | | | | |
 | 15 | OECD inflation (#6) | M1 | etl-extractor | ⬜ | | | | |
