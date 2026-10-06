@@ -25,7 +25,7 @@
 | 11 | Local infrastructure, Python project, CI (#2) | M1 | infra-devops | ✅ | 2026-10-06T10:03:06+02:00 | 2026-10-06T10:20:34+02:00 | 2601890 | PR #17: CI green (12 tests incl. database tests, coverage 97 %); review APPROVED after 1 fix round; acceptance ACCEPTED after scope note (make etl/transform/check moved to #8) and pinned images |
 | 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | ✅ | 2026-10-06T10:13:23+02:00 | 2026-10-06T10:23:42+02:00 | 23b8a11 | PR #18: CI green; 20 tests incl. column contract (coverage 98 %); review APPROVED; acceptance ACCEPTED |
 | 13 | HTTP layer and ECB exchange rates (#4) | M1 | etl-extractor | ✅ | 2026-10-06T10:22:23+02:00 | 2026-10-06T14:41:20+02:00 | 07b7435 | PR #19: CI green; 54 tests (coverage 99 %); review APPROVED after 1 fix round (explicit extractor contract); acceptance ACCEPTED |
-| 14 | ECB euro area inflation (#5) | M1 | etl-extractor | 🟡 | 2026-10-06T14:35:49+02:00 | | | |
+| 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:30+02:00 | aa52406 | PR #20: CI green; review APPROVED after 1 round (mutation pass); acceptance ACCEPTED (real ECB call parsed) |
 | 15 | OECD inflation (#6) | M1 | etl-extractor | 🟡 | 2026-10-06T14:35:49+02:00 | | | |
 | 16 | World Bank metadata and annual inflation (#7) | M1 | etl-extractor | 🟡 | 2026-10-06T14:35:49+02:00 | | | |
 | 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | ⬜ | | | | |
@@ -47,6 +47,7 @@
 - 2026-10-06 10:20 — Task 11 — local infrastructure, project tooling (coverage, strict typing, naming rules) and CI merged; Docker images pinned — evidence: PR #17 CI green, review APPROVED, acceptance ACCEPTED — next: task 12 (raw schemas).
 - 2026-10-06 10:23 — Task 12 — raw and audit schemas merged (5 raw tables with lineage, run log with stage timings, idempotent apply in one transaction) — evidence: PR #18 CI green, review APPROVED, acceptance ACCEPTED — next: task 13 (HTTP layer and ECB exchange rates, in progress).
 - 2026-10-06 14:41 — Task 13 — HTTP layer (timeout, retries), logging with credential redaction, explicit extractor contract and ECB exchange rate extractor merged — evidence: PR #19 CI green, review APPROVED, acceptance ACCEPTED — next: tasks 14–16 (run in parallel since 14:35).
+- 2026-10-06 14:43 — Task 14 — ECB euro area HICP extractor merged (HICP dataset only, flash estimates kept, NaN skipped) — evidence: PR #20 CI green, review APPROVED, acceptance ACCEPTED — next: merge tasks 15 and 16, then task 17.
 
 ## Blockers
 
