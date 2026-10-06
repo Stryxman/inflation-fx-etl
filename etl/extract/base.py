@@ -11,9 +11,11 @@ Every module in ``etl.extract`` (one per source) exposes::
     def fetch(cfg: Config, since: date, get: Getter = etl.http.get) -> list[bytes]: ...
     def parse(payload: bytes) -> list[Row]: ...
 
-``LAST`` type is one of ``"date"`` (a date column), ``"month"`` (a date column holding the
-first day of a month; the extractor formats ``since`` with ``month_start``) or ``"year"``
-(an integer year column). ``since_for`` turns the latest loaded value into the start date.
+``LAST`` type is one of ``"date"`` (a date column), ``"month"`` (a text column holding the
+period as ``YYYY-MM``; the loader's ``last_value`` returns its first day, and the extractor
+formats ``since`` with ``month_start``) or ``"year"`` (an integer year column). Parsers never
+convert a monthly period to a date: rows keep the ``YYYY-MM`` text of the raw table.
+``since_for`` turns the latest loaded value into the start date.
 ``None`` means the source is always fully reloaded.
 
 ``fetch`` performs the HTTP calls (``get`` is injectable) and returns one payload per
