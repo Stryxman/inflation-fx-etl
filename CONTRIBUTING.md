@@ -31,6 +31,11 @@
 - Log URLs without credentials. The CLI exposes `--log-level`.
 - Any dataclass or object carrying connection credentials declares them with `field(repr=False)`; never log a DSN unredacted.
 
+## Secrets and dependencies
+
+- `.env.example` holds local placeholder values only (`*_local_only`). Real credentials are never committed; `.env` is ignored by git.
+- Docker images are pinned to exact versions (`postgres:17.11`, `grafana/grafana-oss:13.0.2`) in `docker-compose.yml` and the CI. An upgrade is a deliberate commit that states the new version.
+
 ## Performance
 
 - Each source records `fetch_ms`, `parse_ms` and `load_ms` in `audit.etl_runs` and in the run summary. No threshold is enforced; the first real load is the reference measurement (`docs/performance.md`).

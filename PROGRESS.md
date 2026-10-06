@@ -22,7 +22,7 @@
 | # | Task | Milestone | Agent | Status | Start | End | Commit | Evidence |
 |---|---|---|---|---|---|---|---|---|
 | 10 | Apply D14 (progress log checks) | M1 | orchestrator | ✅ | 2026-10-02T15:07:08+02:00 | 2026-10-02T15:08:38+02:00 | 9a9117c | Progress check extended (9 tests: cited commits exist, one log entry per done task) and wired into the pre-commit hook; tracking agent removed; consistency check COMPLIANT |
-| 11 | Local infrastructure, Python project, CI (#2) | M1 | infra-devops | 🟡 | 2026-10-06T10:03:06+02:00 | | | |
+| 11 | Local infrastructure, Python project, CI (#2) | M1 | infra-devops | ✅ | 2026-10-06T10:03:06+02:00 | 2026-10-06T10:20:34+02:00 | 2601890 | PR #17: CI green (12 tests incl. database tests, coverage 97 %); review APPROVED after 1 fix round; acceptance ACCEPTED after scope note (make etl/transform/check moved to #8) and pinned images |
 | 12 | Raw schemas and audit log (#3) | M1 | sql-transformer | 🟡 | 2026-10-06T10:13:23+02:00 | | | |
 | 13 | HTTP layer and ECB exchange rates (#4) | M1 | etl-extractor | ⬜ | | | | |
 | 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ⬜ | | | | |
@@ -44,6 +44,7 @@
 - 2026-10-02 14:51 — Task 9 (in progress) — retroactive review of M0: 5 important findings fixed (token report headers, wrong start times, tracking-agent instructions, design notes out of date, untestable freshness rule) and 8 issues completed with missing criteria; acceptance check of issue #1 passed — evidence: review APPROVED, consistency check COMPLIANT, acceptance ACCEPTED — next: project lead approval of the charter v1.0 and M0 close.
 - 2026-10-02 14:54 — Task 9 — project lead approved the charter v1.0 and the M0 close; issue #1 and milestone M0 closed — evidence: approval in session, all three quality gates passed — next: M1 plan (Extract + Load).
 - 2026-10-02 15:08 — Task 10 — D14 applied: mechanical checks of the progress log at every commit, tracking agent removed, end-of-milestone re-read added to the consistency check; charter v1.1 — evidence: 9 tests green, consistency check COMPLIANT — next: M1 plan.
+- 2026-10-06 10:20 — Task 11 — local infrastructure, project tooling (coverage, strict typing, naming rules) and CI merged; Docker images pinned — evidence: PR #17 CI green, review APPROVED, acceptance ACCEPTED — next: task 12 (raw schemas).
 
 ## Blockers
 
