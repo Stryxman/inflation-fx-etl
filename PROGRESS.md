@@ -28,7 +28,7 @@
 | 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:30+02:00 | aa52406 | PR #20: CI green; review APPROVED after 1 round (mutation pass); acceptance ACCEPTED (real ECB call parsed) |
 | 15 | OECD inflation (#6) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:58+02:00 | 8ed7c3e | PR #21: CI green; review APPROVED after 1 round (period kept as YYYY-MM text; 21 mutations detected); acceptance ACCEPTED (real OECD call: USA 2025-10 gap preserved) |
 | 16 | World Bank metadata and annual inflation (#7) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:44:10+02:00 | 6c79610 | PR #22: CI green; review APPROVED after 1 round (13 mutations detected); acceptance ACCEPTED (real call: 8 countries, 88 inflation rows); database fill re-checked with #8 |
-| 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | 🟡 | 2026-10-06T14:44:31+02:00 | | | |
+| 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | ✅ | 2026-10-06T14:44:31+02:00 | 2026-10-06T15:04:13+02:00 | 849d86a | PR #23: CI green; 153 tests (coverage 98 %); review APPROVED after 1 round (transaction guarantee proven from a second connection); acceptance ACCEPTED (2 real loads, identical counts; #7 tables filled) |
 | 18 | M1 acceptance check | M1 | code-reviewer, qa-verifier, controleur-coherence | ⬜ | | | | |
 
 ## Log
@@ -50,6 +50,7 @@
 - 2026-10-06 14:43 — Task 14 — ECB euro area HICP extractor merged (HICP dataset only, flash estimates kept, NaN skipped) — evidence: PR #20 CI green, review APPROVED, acceptance ACCEPTED — next: merge tasks 15 and 16, then task 17.
 - 2026-10-06 14:43 — Task 15 — OECD inflation extractor merged (two dataflows, grouped and spaced requests, USA 2025-10 gap kept empty) — evidence: PR #21 CI green, review APPROVED, acceptance ACCEPTED — next: merge task 16, then task 17.
 - 2026-10-06 14:44 — Task 16 — World Bank extractor merged (country metadata and dormant annual inflation fallback) — evidence: PR #22 CI green, review APPROVED, acceptance ACCEPTED — next: task 17 (loader, pipeline, CLI, first real load).
+- 2026-10-06 15:04 — Task 17 — loader, audit log, isolated pipeline and CLI merged; first real load: 26,696 rows in about 12 s, second run unchanged (see docs/performance.md) — evidence: PR #23 CI green, review APPROVED, acceptance ACCEPTED — next: task 18 (M1 review and close).
 
 ## Blockers
 
