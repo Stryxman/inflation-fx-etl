@@ -14,6 +14,8 @@ Verification date: 2026-10-02. Tested window: from 2015-01.
 
 Rate limit: the OECD API rejects bursts of requests (message "You have exceeded the number of requests currently permitted"); calls must be spaced a few seconds apart and retried with an increasing delay.
 
+Pipeline source names (`audit.etl_runs.source`, `python -m etl extract <source>`): `ecb_fx`, `ecb_hicp`, `oecd_cpi` (one extractor for both OECD dataflows, `oecd_cpi` and `oecd_cpi_c2018` blocks), `wb_country` and `wb_inflation` (the two parts of the `worldbank` block).
+
 ## 2. Coverage by territory
 
 Monthly annual-rate series, measured from 2015-01. No World Bank fallback is needed.

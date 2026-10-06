@@ -2,7 +2,7 @@
 
 - **Version:** 1.2
 - **Date:** 2026-10-06
-- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 propagates decision D14; v1.2 adds the engineering standards (D15), pending approval at the M1 review
+- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 (propagation of D14) and v1.2 (engineering standards, D15) pending approval at the M1 review
 - **Author:** Richard (project lead), with an AI coding assistant
 
 ## 1. Context and question tracked
@@ -107,8 +107,8 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
   2. Year-on-year inflation of the selected countries, with the euro area dashed.
   3. Scatter plot for the latest available month: inflation gap (X) against `fx_yoy` (Y), one point per country.
   4. `ppp_gap` index, with a reference line at 100.
-- Points derived from the fallback (`is_fallback`) are visibly marked on panels 2 and 4.
   5. Pipeline health: latest run per source, status, rows loaded, and failing quality checks.
+- Points derived from the fallback (`is_fallback`) are visibly marked on panels 2 and 4.
 - Automatic refresh every 5 minutes. The default period covers the last 5 years.
 
 ### 4.5 Robustness
@@ -117,7 +117,7 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 - **HTTP:** 30 s maximum per request; 3 retries with increasing delay (1 s, 2 s, 4 s) for 5xx errors, 429 and network errors.
 - **Source isolation:** if a source fails, `audit.etl_runs.status = failed` is written with the error message and the other sources continue. The transformation runs on the available data. The CLI exits with code 1 if at least one source failed.
 - **Transactions:** a failure in a layer rolls back the whole layer; the `mart` views keep their previous state.
-- **Commands:** `make up`, `down`, `etl`, `transform`, `check`, `test`, `psql`, `reset`. `tests/test_config.py` checks that `config/sources.yaml` covers every territory.
+- **Commands:** `make venv`, `up`, `down`, `etl`, `transform`, `check`, `test`, `lint`, `psql`, `reset`. `tests/test_config.py` checks that `config/sources.yaml` covers every territory.
 - **Scheduling:** manual trigger (`make etl`) in V1. The README provides an optional daily cron line.
 - **Testing:** unit tests on each `parse()`, SQL tests with exact expected values, integration test with two runs and mocked HTTP; each test is written before the code (TDD).
 

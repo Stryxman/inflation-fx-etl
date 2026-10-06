@@ -8,7 +8,7 @@ scheduled runs.
 - Machine: Linux x86_64, 8 logical CPUs, 14 GB RAM, PostgreSQL 17.11 in a local Docker
   container, residential internet connection
 - Command: `make etl` (that is `python -m etl run`), twice in a row on an empty `etl` database
-- Query: `select source, rows_upserted, fetch_ms, parse_ms, load_ms from audit.etl_runs order by run_id;`
+- Query: `select source, rows_upserted, fetch_ms, parse_ms, load_ms from audit.etl_runs order by run_id;` (runs 1–10 below; later runs append new rows)
 
 ## First load (empty database, history from 2015-01-01)
 

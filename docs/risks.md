@@ -8,5 +8,5 @@
 | R4 | Docker missing or misconfigured on the machine | Medium | High | Prerequisite documented; `make up` checks the healthcheck | Open |
 | R5 | Scope drift (crypto, other countries) | Medium | Medium | Out-of-scope list written in the project charter; checked by the acceptance agent (`qa-verifier`) | Open |
 | R6 | Misreading of an indicator (depreciation direction, PPP base) | Medium | High | Formulas in the project charter; SQL tests with exact values | Open |
-| R7 | API rate limits are hit | Low | Medium | Incremental mode; retries with increasing delay | Open |
+| R7 | API rate limits are hit | Low | Medium | Incremental mode; retries with increasing delay; OECD keys grouped into 4 requests spaced by 2 s (M1, about 6 s of the 9 s OECD fetch, see `docs/performance.md`) | Open |
 | R8 | Credentials leak (`.env`) | Low | High | `.env` ignored by git; only `.env.example` is versioned | Open |

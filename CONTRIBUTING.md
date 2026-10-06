@@ -26,7 +26,7 @@
 
 ## Logs
 
-- Use `etl.log.get_logger(__name__)`. Never call `print`, except for the final summary of the CLI.
+- Use `etl.log.get_logger(__name__)`. Never call `print`, except for user-facing CLI output (run summary and command results).
 - Levels: `INFO` for steps, `WARNING` for retries, `ERROR` for failures, `DEBUG` for detail.
 - Log URLs without credentials. The CLI exposes `--log-level`.
 - Any dataclass or object carrying connection credentials declares them with `field(repr=False)`; never log a DSN unredacted.
