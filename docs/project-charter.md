@@ -2,7 +2,7 @@
 
 - **Version:** 1.2
 - **Date:** 2026-10-06
-- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 (propagation of D14) and v1.2 (engineering standards, D15) pending approval at the M1 review
+- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 (propagation of D14) and v1.2 (engineering standards, D15) approved by the project lead on 2026-10-06 (M1 milestone review)
 - **Author:** Richard (project lead), with an AI coding assistant
 
 ## 1. Context and question tracked
@@ -182,5 +182,5 @@ Decision [D15](decisions.md), applying to all code:
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 1.0 | 2026-10-02 | First version, derived from the design specification | Approved 2026-10-02 |
-| 1.1 | 2026-10-02 | Quality gates: progress log checks (propagation of D14) | Reflects D14 (decision approved 2026-10-02); v1.1 itself pending project lead approval at the M1 review |
-| 1.2 | 2026-10-06 | Engineering standards (D15) | Pending project lead approval at the M1 review |
+| 1.1 | 2026-10-02 | Quality gates: progress log checks (propagation of D14) | Approved 2026-10-06 |
+| 1.2 | 2026-10-06 | Engineering standards (D15) | Approved 2026-10-06 |
