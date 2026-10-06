@@ -1,8 +1,8 @@
 # Project charter — Inflation × Exchange Rate ETL
 
-- **Version:** 1.1
-- **Date:** 2026-10-02
-- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 propagates decision D14
+- **Version:** 1.2
+- **Date:** 2026-10-06
+- **Status:** v1.0 approved by the project lead on 2026-10-02 (M0 milestone review); v1.1 propagates decision D14; v1.2 adds the engineering standards (D15), pending approval at the M1 review
 - **Author:** Richard (project lead), with an AI coding assistant
 
 ## 1. Context and question tracked
@@ -121,6 +121,15 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 - **Scheduling:** manual trigger (`make etl`) in V1. The README provides an optional daily cron line.
 - **Testing:** unit tests on each `parse()`, SQL tests with exact expected values, integration test with two runs and mocked HTTP; each test is written before the code (TDD).
 
+### 4.6 Engineering standards
+
+Decision [D15](decisions.md), applying to all code:
+
+- **Logging:** `etl.log.get_logger(__name__)` only, no `print` except the CLI summary; `INFO` for steps, `WARNING` for retries, `ERROR` for failures, `DEBUG` for detail; URLs logged without credentials; `--log-level` option.
+- **Performance:** `fetch_ms`, `parse_ms` and `load_ms` per source in `audit.etl_runs` and in the run summary; no threshold, the first real load is the reference (`docs/performance.md`).
+- **Quality:** test coverage at least 85 %, `mypy` strict, Google-style docstrings (ruff `D`), enforced in CI.
+- **Naming:** ruff `N` rules; conventions in `CONTRIBUTING.md`.
+
 ## 5. Out of scope
 
 - Cryptocurrencies (planned for V2 as a third source).
@@ -174,3 +183,4 @@ Grafana dashboard "Inflation × FX", provisioned automatically from `grafana/das
 |---|---|---|---|
 | 1.0 | 2026-10-02 | First version, derived from the design specification | Approved 2026-10-02 |
 | 1.1 | 2026-10-02 | Quality gates: progress log checks (propagation of D14) | Reflects D14 (decision approved 2026-10-02); v1.1 itself pending project lead approval at the M1 review |
+| 1.2 | 2026-10-06 | Engineering standards (D15) | Pending project lead approval at the M1 review |

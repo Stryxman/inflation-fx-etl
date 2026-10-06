@@ -1,6 +1,6 @@
 # Decision log
 
-All decisions below were taken or approved by Richard (project lead) on 2026-10-02. Justifications are product reasons.
+All decisions below were taken or approved by Richard (project lead) on the date shown in the table. Justifications are product reasons.
 
 | ID | Date | Topic | Decision | Status |
 |---|---|---|---|---|
@@ -18,6 +18,7 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 | D12 | 2026-10-02 | Language | All public content in English | Approved 2026-10-02 |
 | D13 | 2026-10-02 | Progress tracking | The orchestrator updates the log; the tracking agent only at milestone close (measured cost) | Approved 2026-10-02; milestone-close part superseded by D14 |
 | D14 | 2026-10-02 | Progress log checks | Tracking agent removed: mechanical checks by a script at every commit, meaning checked by the existing review, acceptance and consistency agents | Approved 2026-10-02 |
+| D15 | 2026-10-06 | Engineering standards | Logging, performance measurement, quality gates (coverage, typing, docstrings) and naming conventions for all code | Approved 2026-10-06 |
 
 ## D1 — Tracked subject
 
@@ -197,3 +198,19 @@ All decisions below were taken or approved by Richard (project lead) on 2026-10-
 **Decision.** The tracking agent is removed. A script checks `PROGRESS.md` at every commit that touches it: ISO timestamps with time zone, `Start` before `End`, required fields of done tasks, cited commits that exist in the repository, and one `## Log` entry per done task. At each milestone close, the consistency check re-reads the whole log and checks that every piece of evidence matches the repository and GitHub; the acceptance check re-runs the evidence of each criterion.
 
 **Rationale.** Mechanical errors are caught earlier (at each commit instead of at milestone close), deterministically and at almost no cost. Errors of meaning stay covered by three independent agents that already read the log.
+
+## D15 — Engineering standards
+
+**Context.** The pipeline will run unattended against external APIs. Failures and slowdowns must be diagnosable from logs and the audit table, and the code base must stay readable and consistent as it grows.
+
+**Options considered.**
+- All four standards: logging, performance measurement, quality gates, naming conventions.
+- A subset (for example quality gates only).
+
+**Decision.** All four, applying to every task:
+- **Logs:** a single logger factory (`etl.log.get_logger`), no `print` except the CLI summary, defined levels, URLs logged without credentials, a `--log-level` option.
+- **Performance:** per-source durations `fetch_ms`, `parse_ms` and `load_ms` stored in `audit.etl_runs` and shown in the run summary; no threshold, the first real load is the reference measurement (`docs/performance.md`).
+- **Quality:** coverage of at least 85 % (`pytest-cov`), `mypy` in strict mode, Google-style docstrings on every module, class and public function (ruff `D`), all enforced in CI.
+- **Naming:** ruff `N` rules, with conventions written in `CONTRIBUTING.md`.
+
+**Rationale.** Per-step logs and stored durations make a slow or failing source visible without re-running it. Automated gates catch regressions at review time rather than in production, and written conventions keep contributions consistent. The four standards are cheap to set up at the start and costly to retrofit.

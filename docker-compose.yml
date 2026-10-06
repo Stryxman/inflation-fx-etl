@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:17.11
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-etl}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-etl_local_only}
+      POSTGRES_DB: ${POSTGRES_DB:-etl}
+    ports: ["${PGPORT:-5432}:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 20
+  grafana:
+    image: grafana/grafana-oss:13.0.2
+    ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin_local_only}
+    depends_on:
+      db: {condition: service_healthy}
+    volumes: [grafana:/var/lib/grafana]
+volumes: {pgdata: {}, grafana: {}}
