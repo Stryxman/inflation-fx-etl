@@ -40,6 +40,7 @@ M0 scoping completed on 2026-10-02 (charter v1.0 approved). M1 (Extract + Load) 
 | [docs/decisions.md](docs/decisions.md) | Decision log (D1–D15) |
 | [docs/risks.md](docs/risks.md) | Risk register (R1–R8) |
 | [docs/sources.md](docs/sources.md) | Data sources, licences, coverage and technical notes |
+| [docs/performance.md](docs/performance.md) | Reference performance measurements of the pipeline |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Naming, test, log and commit conventions |
 | [PROGRESS.md](PROGRESS.md) | Task tracking and project log |
 | [config/countries.yaml](config/countries.yaml) | Country scope |
@@ -61,4 +62,15 @@ make test                # run the tests (database tests need `make up`)
 make lint                # ruff and mypy
 ```
 
-`make down` stops the containers; `make reset` also deletes their data. The `make etl`, `make transform` and `make check` targets arrive with the extract and transform milestones.
+`make down` stops the containers; `make reset` also deletes their data.
+
+Load the data (history since 2015-01-01 on the first run, then incremental):
+
+```bash
+make etl            # extract all sources into raw.* and log each run in audit.etl_runs
+.venv/bin/python -m etl --log-level DEBUG run   # same, with detailed logs
+make transform      # apply the SQL layers (staging, mart; added in M2)
+make check          # data quality checks (added in M2)
+```
+
+Reference timings of a full and an incremental load are in [docs/performance.md](docs/performance.md).

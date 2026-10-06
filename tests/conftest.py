@@ -37,3 +37,13 @@ def db(cfg: Config) -> Iterator[psycopg.Connection]:
     finally:
         conn.rollback()
         conn.close()
+
+
+@pytest.fixture
+def other_conn(cfg: Config, db: psycopg.Connection) -> Iterator[psycopg.Connection]:
+    """Independent autocommit connection: sees only what ``db`` has committed."""
+    conn = psycopg.connect(cfg.test_dsn, autocommit=True)
+    try:
+        yield conn
+    finally:
+        conn.close()

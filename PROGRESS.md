@@ -28,7 +28,7 @@
 | 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:30+02:00 | aa52406 | PR #20: CI green; review APPROVED after 1 round (mutation pass); acceptance ACCEPTED (real ECB call parsed) |
 | 15 | OECD inflation (#6) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:58+02:00 | 8ed7c3e | PR #21: CI green; review APPROVED after 1 round (period kept as YYYY-MM text; 21 mutations detected); acceptance ACCEPTED (real OECD call: USA 2025-10 gap preserved) |
 | 16 | World Bank metadata and annual inflation (#7) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:44:10+02:00 | 6c79610 | PR #22: CI green; review APPROVED after 1 round (13 mutations detected); acceptance ACCEPTED (real call: 8 countries, 88 inflation rows); database fill re-checked with #8 |
-| 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | ⬜ | | | | |
+| 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | 🟡 | 2026-10-06T14:44:31+02:00 | | | |
 | 18 | M1 acceptance check | M1 | code-reviewer, qa-verifier, controleur-coherence | ⬜ | | | | |
 
 ## Log
