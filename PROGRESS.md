@@ -27,7 +27,7 @@
 | 13 | HTTP layer and ECB exchange rates (#4) | M1 | etl-extractor | ✅ | 2026-10-06T10:22:23+02:00 | 2026-10-06T14:41:20+02:00 | 07b7435 | PR #19: CI green; 54 tests (coverage 99 %); review APPROVED after 1 fix round (explicit extractor contract); acceptance ACCEPTED |
 | 14 | ECB euro area inflation (#5) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:30+02:00 | aa52406 | PR #20: CI green; review APPROVED after 1 round (mutation pass); acceptance ACCEPTED (real ECB call parsed) |
 | 15 | OECD inflation (#6) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:43:58+02:00 | 8ed7c3e | PR #21: CI green; review APPROVED after 1 round (period kept as YYYY-MM text; 21 mutations detected); acceptance ACCEPTED (real OECD call: USA 2025-10 gap preserved) |
-| 16 | World Bank metadata and annual inflation (#7) | M1 | etl-extractor | 🟡 | 2026-10-06T14:35:49+02:00 | | | |
+| 16 | World Bank metadata and annual inflation (#7) | M1 | etl-extractor | ✅ | 2026-10-06T14:35:49+02:00 | 2026-10-06T14:44:10+02:00 | 6c79610 | PR #22: CI green; review APPROVED after 1 round (13 mutations detected); acceptance ACCEPTED (real call: 8 countries, 88 inflation rows); database fill re-checked with #8 |
 | 17 | Loader, audit, pipeline, CLI (#8) | M1 | etl-extractor | ⬜ | | | | |
 | 18 | M1 acceptance check | M1 | code-reviewer, qa-verifier, controleur-coherence | ⬜ | | | | |
 
@@ -49,6 +49,7 @@
 - 2026-10-06 14:41 — Task 13 — HTTP layer (timeout, retries), logging with credential redaction, explicit extractor contract and ECB exchange rate extractor merged — evidence: PR #19 CI green, review APPROVED, acceptance ACCEPTED — next: tasks 14–16 (run in parallel since 14:35).
 - 2026-10-06 14:43 — Task 14 — ECB euro area HICP extractor merged (HICP dataset only, flash estimates kept, NaN skipped) — evidence: PR #20 CI green, review APPROVED, acceptance ACCEPTED — next: merge tasks 15 and 16, then task 17.
 - 2026-10-06 14:43 — Task 15 — OECD inflation extractor merged (two dataflows, grouped and spaced requests, USA 2025-10 gap kept empty) — evidence: PR #21 CI green, review APPROVED, acceptance ACCEPTED — next: merge task 16, then task 17.
+- 2026-10-06 14:44 — Task 16 — World Bank extractor merged (country metadata and dormant annual inflation fallback) — evidence: PR #22 CI green, review APPROVED, acceptance ACCEPTED — next: task 17 (loader, pipeline, CLI, first real load).
 
 ## Blockers
 
